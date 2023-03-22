@@ -4,10 +4,13 @@ services:
   tomcat:
     image: tomcat:9.0.71-jdk11-temurin-focal
     volumes: 
+       - data: /tmp/github
        - type: volume
-         source: /tmp/github
+         source: data
          target: /usr/local/tomcat/webapps
          volume:
            nocopy: true
     ports:
       - 8080:8080
+volumes:
+  data:
